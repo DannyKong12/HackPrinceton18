@@ -1,0 +1,42 @@
+@import
+url('https://fonts.googleapis.com/css?family=Raleway:100,300,400,700,900');
+@import
+url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css');
+
+body {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+  padding-top: 1em;
+  width: 365px;
+  height: 100px;
+  margin: 1em;
+  display: inline-block;
+  border-style: solid;
+  border-width: thin;
+  border-color: #DDD;
+  border-radius: 5px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.ul-container {
+  width: 70vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+a {
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: blue;
+}
+
+a, p {
+  padding-left: 2em;
+}

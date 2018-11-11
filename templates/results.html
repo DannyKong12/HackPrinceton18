@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Your Results</title>
+  </head>
+  <link rel="stylesheet" href="../static/css/results.css">
+  <body>
+    <h1>Your recommended repositories</h1>
+    <div class="ul-container">
+      <ul>
+        {% for user, repo, language in pairs %}
+        <li><a href={{ "https://github.com/" + user + "/" + repo }}>{{user}}/<strong>{{repo}}</strong></a><p>{{language}}</p></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

@@ -9,6 +9,8 @@ import os
 import getRecommendations
 
 token = ""
+top10 = []
+
 import convertRepo
 # import getRecommendations
 
@@ -48,6 +50,7 @@ def auth(user_name):
 
 @app.route("/get_recommendations/")
 def get_recommendations():
+    global top10
     # print("HERE")
     # print(token)
     rated_content = userFunc.get_user_rated_content(token)
@@ -56,9 +59,22 @@ def get_recommendations():
     # convertRepo.convert_stored_repos() # Used just for converting
 
     top10 = getRecommendations.top10(rated_content)
+    # return json.dumps(top10)
+    return redirect(url_for('results'))
+
+@app.route('/results')
+def results():
     print(top10)
-    return json.dumps(top10)
-    # return "Hello World"
+    urls = [x['url'].split('/')[-2:] for x in top10]
+    languages = [x['languages'][0] for x in top10]
+
+    users = [x[0] for x in urls]
+    repos = [x[1] for x in urls]
+
+    pairs = zip(users, repos, languages)
+
+
+    return render_template('templates/results.html', pairs=pairs)
 
 
 if __name__ == '__main__':

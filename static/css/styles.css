@@ -42,7 +42,8 @@ h1 {
   position: relative;
   height: 65vh;
   width: 50vw;
-  
+  background-image: url('../assets/markup.png');
+  background-size: cover;
   float: right;
   top: 10vh;
 }
@@ -55,6 +56,7 @@ h1 {
   background-repeat: no-repeat;
 }
 
-/* .About {
-  height: 400px;
-} */
+.About {
+  padding: 4em 10em;
+  color: #000;
+}

@@ -5,11 +5,11 @@ def get_score(repo_obj, user_languages):
     score_stars = repo_obj["stars"] / 10000
     if score_stars > 10:
         score_stars = 10
-    
+
     score_watchers = repo_obj["watchers"] / 1000
     if score_watchers > 10:
         score_watchers = 10
-    
+
     # Check for matches of languages
     score_lang = 0
     for count, lang in enumerate(user_languages):
@@ -47,7 +47,6 @@ def top10(lang_list):
     used_names = []
     for i in range(10):
         for score_elem in scores:
-            print(used_names)
             if (score_elem["score"] > max_score) and (score_elem["repo"] not in used_names):
                 max_score = score_elem["score"]
                 max_elem = score_elem
