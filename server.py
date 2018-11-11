@@ -1,13 +1,17 @@
 # from flask import Flask
 # app = Flask(__name__)
 # from app import routes
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 import requests
 import json
 import userFunc
 import os
+import getRecommendations
 
 token = ""
+import convertRepo
+# import getRecommendations
+
 
 app = Flask(__name__, template_folder='.')
 
@@ -22,28 +26,39 @@ def button():
 
 @app.route('/callback')
 def authenticate():
+    # print("HELLO WORLD")
+    global token
     code = request.args.get('code')
     token = requests.post('https://github.com/login/oauth/access_token?client_id='
     + os.environ['ID'] + '&client_secret=' + os.environ['S'] + '&code=' + code).text
-    return token
+    # print("TOKEN___")
+    # print(token)
+    return redirect(url_for("get_recommendations"))
 
 
 @app.route("/user/<user_name>")
 def auth(user_name):
-    print(user_name)
+    # print(user_name)
     response = requests.get("https://api.github.com/users/" + user_name)
-    print(response.content)
+    # print(response.content)
     if (response.content.message == "Not Found"):
         return "User does not exits"
     else:
         return "User exists"
 
-@app.route("/get_recommendations/<user>")
-def get_recommendations(user):
-    rated_content = userFunc.get_user_rated_content(user)
-    return json.dumps(rated_content)
-    # Get content from json
+@app.route("/get_recommendations/")
+def get_recommendations():
+    # print("HERE")
+    # print(token)
+    rated_content = userFunc.get_user_rated_content(token)
+    # print(rated_content)
 
+    # convertRepo.convert_stored_repos() # Used just for converting
+
+    top10 = getRecommendations.top10(rated_content)
+    print(top10)
+    return json.dumps(top10)
+    # return "Hello World"
 
 
 if __name__ == '__main__':

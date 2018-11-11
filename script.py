@@ -10,6 +10,7 @@ data = {}
 
 with open('repos.json', 'r') as f:
     j = json.load(f)
+    
     data['size'] = j['size']
     repos = []
     for i in tqdm(range(data['size'])):
