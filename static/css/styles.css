@@ -1,0 +1,60 @@
+@import
+url('https://fonts.googleapis.com/css?family=Raleway:100,300,400,700,900');
+@import
+url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css');
+
+
+body {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  color: #FFF;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+.button {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  padding: 1em;
+  vertical-align: middle;
+  background-color: #FFF;
+  border-radius: 7px;
+
+}
+
+.none {
+  border: none;
+  font-size: 16px;
+  padding: .5em;
+}
+
+.hero-text {
+  position: absolute;
+  left: 20%;
+  top: 30%;
+  float: right;
+}
+
+.hero-markup {
+  position: relative;
+  height: 65vh;
+  width: 50vw;
+  
+  float: right;
+  top: 10vh;
+}
+
+.hero {
+  width: 100vw;
+  height: 90vh;
+  background-image: url('../assets/bg2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* .About {
+  height: 400px;
+} */
