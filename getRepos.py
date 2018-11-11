@@ -16,7 +16,12 @@ for i in tqdm(range(pages)):
     + str(i) + '&per_page=100').text
     j = json.loads(r)
     repos += [x['repository_url'] for x in j['items']]
-    time.sleep(6000)
+    time.sleep(6)
 
-with open('repositories.json', 'wb') as f:
-    json.dump(repos, f)
+data = {}
+data['repos'] = repos
+data['size'] = len(repos)
+
+
+with open('repos.json', 'w') as f:
+    json.dump(data, f)
