@@ -4,6 +4,7 @@
 from flask import Flask, redirect, render_template, request
 import requests
 import json
+import userFunc
 import os
 
 token = ""
@@ -37,7 +38,13 @@ def auth(user_name):
     else:
         return "User exists"
 
-# Add other routes here
+@app.route("/get_recommendations/<user>")
+def get_recommendations(user):
+    rated_content = userFunc.get_user_rated_content(user)
+    return json.dumps(rated_content)
+    # Get content from json
+
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
